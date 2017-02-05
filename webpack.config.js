@@ -9,6 +9,9 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 })
 
 module.exports = {
+  // it is called webpack devtool, no devtools
+  devtool: 'eval-source-map',
+
   entry: './client/index.js',
   
   output: {
