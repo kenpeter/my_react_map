@@ -6,7 +6,9 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './client/index.html',
   filename: 'index.html',
   inject: 'body'
-})
+});
+
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   // it is called webpack devtool, no devtools
@@ -22,11 +24,21 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ }
+      { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ },
+      // need the loader
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader' })
+      }
     ]
   },
   
-  plugins: [HtmlWebpackPluginConfig]
+  plugins: [
+    HtmlWebpackPluginConfig,
+    
+    // why assets/css/style.css, because serve from client, entry is ./client/index.js
+    new ExtractTextPlugin({ filename: 'assets/css/style.css', disable: false, allChunks: true })
+  ]
   
 }
 
