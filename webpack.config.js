@@ -37,6 +37,8 @@ module.exports = {
     HtmlWebpackPluginConfig,
     
     // why assets/css/style.css, because serve from client, entry is ./client/index.js
+    // This avoid webpack complied error: Error: "extract-text-webpack-plugin" loader is used without the corresponding plugin
+    // we already import style in index.js
     new ExtractTextPlugin({ filename: 'assets/css/style.css', disable: false, allChunks: true })
   ]
   

@@ -1,25 +1,51 @@
 import React from 'react';
+import { connect } from "react-redux";
+import { search } from "../actions/search";
 
-export default class Search extends React.Component {
+class Search extends React.Component {
   
+  constructor(props) {
+    // super props
+    super(props);
 
-  handleSubmit(event) {
-    event.preventDefault();
+    this.state = {
+      search: "Paris, France"   
+    }
+
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
+  }
+  
+  
+  onSubmit(e) {
+    e.preventDefault();
+    
+    this.props.search(this.state.search);
+  }
+  
+  onChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   }
 
+
   render() {
+    // value, this.state.search
     return (
-      <form id="geocoding_form" className="form-horizontal" onSubmit={this.handleSubmit}>
+      <form id="geocoding_form" className="form-horizontal" onSubmit={this.onSubmit}>
 				<div className="form-group">
 					<div className="col-xs-12 col-md-6 col-md-offset-3">
 						<div className="input-group">
-							<input 
+							<input
+							  name="search" 
 							  type="text" 
 							  className="form-control" 
 							  id="address" 
 							  placeholder="Find a location..." 
 							  
-							  value="" onChange={this.handleChange} 
+							  value={this.state.search}
+							  onChange={this.onChange} 
 							/>
 							
 							<span className="input-group-btn">
@@ -32,3 +58,6 @@ export default class Search extends React.Component {
     );
   }
 }
+
+
+export default connect(null, { search })(Search);
