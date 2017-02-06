@@ -12,21 +12,19 @@ export default function search(state = initState, action = {}) {
   switch(action.type) {
     case SEARCH:
     
+      /*
       action.search.then((obj) => {
         console.log("---- in export default function search -----");
         console.log(obj);
-        
-        // This will not call mapStateToProps in Map.js 
-        return {
-          currAddress: obj.currAddress,
-          lat: obj.lat,
-          lng: obj.lng
-        }
-        
       });
+      */
     
-      // How do I return App's state here
-      // .e.g. return {currAddress: xxxx, lat: xxxx, lng: xxxx}
+      return {
+        currAddress: action.search.currAddress,
+        lat: action.search.lat,
+        lng: action.search.lng
+      }
+
     default:
       return state;
   }

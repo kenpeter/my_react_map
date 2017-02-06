@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+
+import thunk from "redux-thunk";
+import promise from "redux-promise-middleware";
 
 import rootReducer from "./rootReducer";
 import App from './components/App';
@@ -11,7 +14,8 @@ import App from './components/App';
 import "./assets/css/style.css";
 
 const store = createStore(
-  rootReducer 
+  rootReducer,
+  applyMiddleware(thunk, promise())
 );
 
 
