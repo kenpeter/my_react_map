@@ -4,26 +4,34 @@ import { connect } from "react-redux";
 class Map extends React.Component {
   
   constructor(props) {
-    console.log("---- in map constructor ----");
+    console.log("---- constructor: map state to props, call before constructor ----");
   
     // super props
     super(props);
-    
-    this.state = {
-      lat: props.initLat,
-      lng: props.initLng
-    }
   }
 
   componentDidMount() {
-    this.componentDidUpdate();
+    console.log("---- in componentDidMount ----");
+  
+    // init
+    var map = new GMaps({
+      el: '#map',
+      lat: this.props.initLat,
+      lng: this.props.initLng
+    });
+
+    map.addMarker({
+      lat: this.props.initLat,
+      lng: this.props.initLng
+    });
+    
   }
 
+  // component did update, won't be called when page reload.
   componentDidUpdate() {
     
     //test
     console.log("---- in componentDidUpdate ----");
-    console.log(this.state);
     
     var map = new GMaps({
       el: '#map',
@@ -53,9 +61,12 @@ class Map extends React.Component {
 function mapStateToProps(state) {
 
   //test
+  // The first time global state is empty, because no one changes global state.
+  // When someone does something on UI, global state changes. 
   console.log("---- mapStateToProps ----");
   console.log(state);
 
+  // This will together with the props pass down
   return {
     lat: state.search.lat,
     lng: state.search.lng
