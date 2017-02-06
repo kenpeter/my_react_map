@@ -1,1 +1,2 @@
 export const SEARCH = 'SEARCH';
+export const TOGGLE_FAV_LOCATION = 'TOGGLE_FAV_LOCATION';

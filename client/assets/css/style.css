@@ -9,6 +9,10 @@ h1 {
 	text-align: center;
 }
 
+.center {
+  text-align: center;
+}
+
 #geocoding_form {
 	margin: 40px auto 60px;
 }
@@ -113,4 +117,8 @@ a.list-group-item span.createdAt {
 	display: block;
 	color: #969FA8;
 	z-index: -1;
+}
+
+.pointer {
+  cursor: pointer;
 }

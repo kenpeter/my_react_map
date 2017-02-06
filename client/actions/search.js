@@ -14,15 +14,24 @@ export function search(search) {
         let lng = latlng.lng();
         let currAddress = results[0].formatted_address;
         
+        /*
         let obj = {
           currAddress: currAddress,
           lat: lat,
           lng: lng
         }
+        */
         
+        // https://stackoverflow.com/questions/39257740/how-to-access-state-inside-redux-reducer
         // here we dispatch the obj
-        // Here we also define the overall state search: obj
-        dispatch({ type: SEARCH, search: obj });
+        // Action and state don't have to match up.
+        //dispatch({ type: SEARCH, search: obj });
+        dispatch({
+          type: SEARCH, 
+          currAddress: currAddress,
+          lat: lat,
+          lng: lng    
+        });
       }
     })
   

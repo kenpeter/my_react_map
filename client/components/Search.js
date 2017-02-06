@@ -21,8 +21,6 @@ class Search extends React.Component {
     e.preventDefault();
     
     this.props.search(this.state.search);
-    
-    
   }
   
   onChange(e) {

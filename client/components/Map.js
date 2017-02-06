@@ -67,6 +67,9 @@ function mapStateToProps(state) {
   console.log(state);
 
   // This will together with the props pass down
+  // you cannot call state.lat.
+  // because you need to use the reducer as identifier.
+  // e.g. state.search.lat or state.toggleFavLocation.toggleFavLocation
   return {
     lat: state.search.lat,
     lng: state.search.lng
