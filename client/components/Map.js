@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from "react-redux";
 
 class Map extends React.Component {
   
@@ -42,4 +43,17 @@ class Map extends React.Component {
 }
 
 
-export default Map;
+function mapStateToProps(state) {
+
+  //test
+  console.log("---- mapStateToProps ----");
+  console.log(state);
+
+  return {
+    lat: state.lat,
+    lng: state.lng
+  };
+}
+
+
+export default connect(mapStateToProps, {  })(Map);

@@ -1,7 +1,9 @@
 import { SEARCH } from "../actions/types";
 
 const initState = {
-  search: ""
+  currAddress: "",
+  lat: "",
+  lng: ""
 };
 
 
@@ -9,12 +11,53 @@ const initState = {
 export default function search(state = initState, action = {}) {
   switch(action.type) {
     case SEARCH:
+    
+      action.search.then((obj) => {
+        console.log("---- in export default function search -----");
+        console.log(obj);
+        
+        // This will not call mapStateToProps in Map.js 
+        return {
+          currAddress: obj.currAddress,
+          lat: obj.lat,
+          lng: obj.lng
+        }
+        
+      });
+    
+      // How do I return App's state here
+      // .e.g. return {currAddress: xxxx, lat: xxxx, lng: xxxx}
+    default:
+      return state;
+  }
+}
+
+
+/*
+// able to fire
+export default function search(state = initState, action = {}) {
+  switch(action.type) {
+    case SEARCH:
+    
+      let currAddress;
+      let lat;
+      let lng;
+      
+      action.search.then((obj) => {
+        currAddress = obj.currAddress;
+        lat = obj.lat;
+        lng = obj.lng;
+      });
+    
       return {
-        search: action.search
+        currAddress: currAddress,
+        lat: lat,
+        lng: lng
       }
       
     default:
       return state;
   }
 }
+*/
 

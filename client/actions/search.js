@@ -2,15 +2,6 @@
 import { SEARCH } from "./types";
 
 
-/*
-export function setSearch(search) {
-  return { 
-    type: SEARCH, 
-    search: search
-  }
-}
-*/
-
 export function search(search) {
   
   return { 
@@ -23,15 +14,22 @@ export function search(search) {
         callback: function(results, status) {
           if (status !== 'OK') return;
           let latlng = results[0].geometry.location;
+          let lat = latlng.lat();
+          let lng = latlng.lng();
           let currAddress = results[0].formatted_address;
-        
-          console.log("---- in search(search) ----");
-          console.log(currAddress);
-        
-          resolve(currAddress);
+          
+          let obj = {
+            currAddress: currAddress,
+            lat: lat,
+            lng: lng
+          }
+          
+          resolve(obj);
         }
       })
     })
   }
-  
-}  
+}
+
+
+
