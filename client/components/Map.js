@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 class Map extends React.Component {
   
   constructor(props) {
+    console.log("---- in map constructor ----");
+  
     // super props
     super(props);
     
@@ -19,15 +21,19 @@ class Map extends React.Component {
 
   componentDidUpdate() {
     
+    //test
+    console.log("---- in componentDidUpdate ----");
+    console.log(this.state);
+    
     var map = new GMaps({
       el: '#map',
-      lat: this.state.lat,
-      lng: this.state.lng
+      lat: this.props.lat,
+      lng: this.props.lng
     });
 
     map.addMarker({
-      lat: this.state.lat,
-      lng: this.state.lng
+      lat: this.props.lat,
+      lng: this.props.lng
     });
   }
 
@@ -40,6 +46,7 @@ class Map extends React.Component {
       </div>
     );
   }
+  
 }
 
 
@@ -50,8 +57,8 @@ function mapStateToProps(state) {
   console.log(state);
 
   return {
-    lat: state.lat,
-    lng: state.lng
+    lat: state.search.lat,
+    lng: state.search.lng
   };
 }
 
