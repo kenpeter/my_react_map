@@ -9,7 +9,7 @@ class Search extends React.Component {
     super(props);
 
     this.state = {
-      search: "Paris, France"   
+      search: props.initAddress  
     }
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -21,6 +21,8 @@ class Search extends React.Component {
     e.preventDefault();
     
     this.props.search(this.state.search);
+    
+    
   }
   
   onChange(e) {

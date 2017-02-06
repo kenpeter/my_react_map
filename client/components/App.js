@@ -7,8 +7,9 @@ export default class App extends React.Component {
     return (
      <div>
         <h1>My react map</h1>
-        <Search />
-        <Map />
-      </div>);
+        <Search initAddress="Paris, France" />
+        <Map initLat="48.856614" initLng="2.3522219" />
+      </div>
+    );
   }
 }
