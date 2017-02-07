@@ -25,7 +25,7 @@ class CurrentLocation extends React.Component {
     
     let star;
     
-    if(this.props.fav) {
+    if(this.props.isFav) {
       star = <i className="fa fa-star" aria-hidden="true"></i>;
     }
     else {
@@ -44,7 +44,8 @@ class CurrentLocation extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    currAddress: state.search.currAddress
+    currAddress: state.search.currAddress,
+    isFav: state.search.isFav
   };
 }
 

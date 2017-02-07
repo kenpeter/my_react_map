@@ -3,7 +3,8 @@ import { SEARCH } from "../actions/types";
 const initState = {
   currAddress: "Paris, France",
   lat: "48.856614",
-  lng: "2.3522219" 
+  lng: "2.3522219",
+  isFav: false 
 };
 
 
@@ -20,7 +21,8 @@ export default function search(state = initState, action = {}) {
       return {
         currAddress: action.currAddress,
         lat: action.lat,
-        lng: action.lng
+        lng: action.lng,
+        isFav: action.isFav
       }
 
     default:
