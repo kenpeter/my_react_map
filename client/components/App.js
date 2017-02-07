@@ -3,6 +3,9 @@ import Search from './Search';
 import Map from "./Map";
 import CurrentLocation from "./CurrentLocation";
 
+import ListLocation from "./ListLocation";
+
+
 export default class App extends React.Component {
   render() {
     let initAddress = "Paris, France";
@@ -12,7 +15,8 @@ export default class App extends React.Component {
         <h1>My react map</h1>
         <Search />
         <Map />
-        <CurrentLocation initAddress={initAddress} />
+        <CurrentLocation />
+        <ListLocation />
       </div>
     );
   }

@@ -14,10 +14,10 @@ class CurrentLocation extends React.Component {
   onClick(e) {
     e.preventDefault();
     
-    let toggleFavLocation = this.props.currAddress ? this.props.currAddress : this.props.initAddress;
+    let currAddress = this.props.currAddress;
     
     //console.log(currAddress);
-    this.props.toggleFavLocation(toggleFavLocation);
+    this.props.toggleFavLocation(currAddress);
   }
   
   
@@ -34,7 +34,7 @@ class CurrentLocation extends React.Component {
     
     return (
       <div className="col-xs-12 col-md-6 col-md-offset-3">
-        <div className="center pointer" onClick={this.onClick}>{star} { this.props.currAddress ? this.props.currAddress : this.props.initAddress }</div>
+        <div className="center pointer" onClick={this.onClick}>{star} { this.props.currAddress }</div>
       </div>  
     );
   }
