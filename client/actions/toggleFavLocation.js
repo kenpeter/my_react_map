@@ -27,39 +27,40 @@ export function toggleFavLocation(currAddress) {
     
     // add or remove from local storage
     let isFav;
-    let storeFavArr = toggleFavLocation.favArr;
-    let index = isAddressInFav(storeFavArr, currAddress);
+    let favArr = toggleFavLocation.favArr;
+    let index = isAddressInFav(favArr, currAddress);
     
     
     if(index !== -1) {
       // found, remove
       isFav = false;
+      
       // https://stackoverflow.com/questions/5767325/how-to-remove-a-particular-element-from-an-array-in-javascript
-      storeFavArr.splice(index, 1); // found the index and remove that item
+      favArr.splice(index, 1); // found the index and remove that item
+      localStorage.favArr = JSON.stringify(favArr);
       
-      
-      console.log("-- remove --");
-      console.log(storeFavArr);
+      //console.log("-- remove --");
+      //console.log(favArr);
     }
     else {
-    
       // not there, add
-      storeFavArr.push({
+      isFav = true;
+      
+      favArr.push({
         address: currAddress,
         timestamp: Date.now()
       });
-      
-      isFav = true;
-      
-      console.log("-- add --");
-      console.log(storeFavArr);
+      localStorage.favArr = JSON.stringify(favArr);
+     
+      //console.log("-- add --");
+      //console.log(favArr);
     }
     
     dispatch({ 
       type: TOGGLE_FAV_LOCATION, 
       currAddress: currAddress,
       isFav: isFav,
-      favArr: storeFavArr 
+      favArr: favArr 
     });
     
   };
