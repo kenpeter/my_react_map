@@ -16,13 +16,13 @@ class Map extends React.Component {
     // init
     var map = new GMaps({
       el: '#map',
-      lat: this.props.initLat,
-      lng: this.props.initLng
+      lat: this.props.lat,
+      lng: this.props.lng
     });
 
     map.addMarker({
-      lat: this.props.initLat,
-      lng: this.props.initLng
+      lat: this.props.lat,
+      lng: this.props.lng
     });
     
   }
@@ -63,8 +63,8 @@ function mapStateToProps(state) {
   //test
   // The first time global state is empty, because no one changes global state.
   // When someone does something on UI, global state changes. 
-  console.log("---- mapStateToProps ----");
-  console.log(state);
+  //console.log("---- mapStateToProps ----");
+  //console.log(state);
 
   // This will together with the props pass down
   // you cannot call state.lat.

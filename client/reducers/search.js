@@ -1,19 +1,9 @@
 import { SEARCH } from "../actions/types";
 
-/*
 const initState = {
-  search: {
-    currAddress: "",
-    lat: "",
-    lng: ""
-  }  
-};
-*/
-
-const initState = {
-  currAddress: "",
-  lat: "",
-  lng: "" 
+  currAddress: "Paris, France",
+  lat: "48.856614",
+  lng: "2.3522219" 
 };
 
 
@@ -21,6 +11,10 @@ const initState = {
 export default function search(state = initState, action = {}) {
   switch(action.type) {
     case SEARCH:
+    
+      //test
+      //console.log("---- in export default function search ----");
+      //console.log(action);
     
       // we define the acton interface like this.
       return {

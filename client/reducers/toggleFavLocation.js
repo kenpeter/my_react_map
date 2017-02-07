@@ -1,7 +1,7 @@
 import { TOGGLE_FAV_LOCATION } from "../actions/types";
 
 const initState = {
-  toggleFavLocation: ""
+  toggleFavLocation: "Paris, France"
 };
 
 

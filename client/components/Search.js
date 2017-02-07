@@ -9,8 +9,9 @@ class Search extends React.Component {
     super(props);
 
     this.state = {
-      search: props.initAddress  
-    }
+      // need to match up the name of input
+      currAddress: this.props.currAddress
+    };
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -20,7 +21,9 @@ class Search extends React.Component {
   onSubmit(e) {
     e.preventDefault();
     
-    this.props.search(this.state.search);
+    // it seems props not changing
+    // so use this.state.xxxx
+    this.props.search(this.state.currAddress);
   }
   
   onChange(e) {
@@ -38,13 +41,13 @@ class Search extends React.Component {
 					<div className="col-xs-12 col-md-6 col-md-offset-3">
 						<div className="input-group">
 							<input
-							  name="search" 
+							  name="currAddress" 
 							  type="text" 
 							  className="form-control" 
 							  id="address" 
 							  placeholder="Find a location..." 
 							  
-							  value={this.state.search}
+							  value={this.state.currAddress}
 							  onChange={this.onChange} 
 							/>
 							
@@ -59,5 +62,10 @@ class Search extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    currAddress: state.search.currAddress
+  };
+}
 
-export default connect(null, { search })(Search);
+export default connect(mapStateToProps, { search })(Search);
