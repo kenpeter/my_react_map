@@ -25,8 +25,8 @@ export function isFav(currAddress) {
     }
     
     // https://github.com/reactjs/redux/issues/1676
-    console.log("---- in isFav ----");
-    console.log(isFav);
+    //console.log("---- in isFav ----");
+    //console.log(isFav);
     
     dispatch({ 
       type: IS_FAV, 

@@ -8,8 +8,6 @@ import ListLocation from "./ListLocation";
 
 export default class App extends React.Component {
   render() {
-    let initAddress = "Paris, France";
-  
     return (
       <div>
         <h1>My react map</h1>

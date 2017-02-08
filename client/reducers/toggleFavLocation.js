@@ -1,8 +1,9 @@
 import { TOGGLE_FAV_LOCATION } from "../actions/types";
+import favAddressInLocalStorage from "../utils/favAddressInLocalStorage";
 
 const initState = {
   currAddress: "Paris, France",
-  favArr: []
+  favArr: favAddressInLocalStorage()
 };
 
 
