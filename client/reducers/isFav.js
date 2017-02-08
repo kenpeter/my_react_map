@@ -1,8 +1,9 @@
 import { IS_FAV } from "../actions/types";
+import isAddressInFavLocalStorage from "../utils/isAddressInFavLocalStorage";
 
 const initState = {
   currAddress: "Paris, France",
-  isFav: false 
+  isFav: isAddressInFavLocalStorage("Paris, France")
 };
 
 

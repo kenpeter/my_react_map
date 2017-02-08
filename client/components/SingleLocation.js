@@ -5,21 +5,27 @@ class SingleLocation extends React.Component {
   
   constructor(props) {
     super(props);
-
-
   }
   
   
-  
-  
-  
   render() {
-    <div>
-      single location
-    </div>
+    let cn = "list-group-item";
+
+    if (this.props.active) {
+      cn += "active-location";
+    }
+  
+  
+    // render and return
+    // render and return
+    return(
+      <a className={cn}>
+        {this.props.address} - {this.props.timestamp}
+      </a>
+    )
   }
   
 }
 
 
-export default connect(null, {  })(SingleLocation);
+export default SingleLocation;

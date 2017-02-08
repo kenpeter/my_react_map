@@ -1,26 +1,34 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { SingleLocation } from "./SingleLocation";
+import SingleLocation from "./SingleLocation";
 
 
 class ListLocation extends React.Component {
   
   constructor(props) {
     super(props);
-    
-    
   }
   
   
   render() {
-    let Locations = "";
+    // yes index
+    let locations = this.props.propFavArr.map((loc, index) => {
+   
+      // need to return 
+      // have to return in array
+      return <SingleLocation
+        key={index} 
+        address={loc.address}
+        timestamp={loc.timestamp}
+      />
+    });
     
+    //console.log(locations);
     
     return (
       <div className="list-group col-xs-12 col-md-6 col-md-offset-3">
         <span className="list-group-item active">Saved Locations</span>
-        {Locations}
-
+        { locations }
       </div>  
     );
   }
@@ -28,6 +36,11 @@ class ListLocation extends React.Component {
 }
 
 
+function mapStateToProps(state) {
 
+  return {
+    propFavArr: state.toggleFavLocation.favArr
+  };
+}
 
-export default connect(null, {  })(ListLocation);
+export default connect(mapStateToProps, {  })(ListLocation);
