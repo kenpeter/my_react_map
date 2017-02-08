@@ -1,5 +1,5 @@
 // the types.js has many constant.
-import { SEARCH } from "./types";
+import { SEARCH, IS_FAV } from "./types";
 import isAddressInFav from "../utils/isAddressInFav";
 
 export function search(search) {
@@ -37,6 +37,14 @@ export function search(search) {
           currAddress: currAddress,
           lat: lat,
           lng: lng,
+          isFav: isFav  
+        });
+        
+        
+        // another one
+        dispatch({
+          type: IS_FAV,
+          currAddress: currAddress,
           isFav: isFav  
         });
       }

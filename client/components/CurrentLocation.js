@@ -16,7 +16,7 @@ class CurrentLocation extends React.Component {
     
     let currAddress = this.props.currAddress;
     
-    //console.log(currAddress);
+    //
     this.props.toggleFavLocation(currAddress);
   }
   
@@ -25,7 +25,10 @@ class CurrentLocation extends React.Component {
     
     let star;
     
-    if(this.props.isFav) {
+    console.log("--- in render ---");
+    console.log(this.props.propIsFav);
+    
+    if(this.props.propIsFav) {
       star = <i className="fa fa-star" aria-hidden="true"></i>;
     }
     else {
@@ -43,9 +46,15 @@ class CurrentLocation extends React.Component {
 
 
 function mapStateToProps(state) {
+
+  //console.log("--- in mapStateToProps --");
+  //console.log(state.isFav.isFav);
+
   return {
     currAddress: state.search.currAddress,
-    isFav: state.search.isFav
+    // Ok, this collide the name with state and method
+    //isFav: state.isFav.isFav
+    propIsFav: state.isFav.isFav
   };
 }
 

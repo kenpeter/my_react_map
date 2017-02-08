@@ -4,14 +4,14 @@ import { connect } from "react-redux";
 class Map extends React.Component {
   
   constructor(props) {
-    console.log("---- constructor: map state to props, call before constructor ----");
+    //console.log("---- constructor: map state to props, call before constructor ----");
   
     // super props
     super(props);
   }
 
   componentDidMount() {
-    console.log("---- in componentDidMount ----");
+    //console.log("---- in componentDidMount ----");
   
     // init
     var map = new GMaps({
@@ -31,7 +31,7 @@ class Map extends React.Component {
   componentDidUpdate() {
     
     //test
-    console.log("---- in componentDidUpdate ----");
+    //console.log("---- in componentDidUpdate ----");
     
     var map = new GMaps({
       el: '#map',

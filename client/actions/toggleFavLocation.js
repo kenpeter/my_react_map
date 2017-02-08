@@ -1,4 +1,4 @@
-import { TOGGLE_FAV_LOCATION } from "./types";
+import { TOGGLE_FAV_LOCATION, IS_FAV } from "./types";
 import isAddressInFav from "../utils/isAddressInFav";
 
 
@@ -23,8 +23,8 @@ export function toggleFavLocation(currAddress) {
       favArr.splice(index, 1); // found the index and remove that item
       localStorage.favArr = JSON.stringify(favArr);
       
-      //console.log("-- remove --");
-      //console.log(favArr);
+      console.log("-- remove --");
+      console.log(favArr);
     }
     else {
       // not there, add
@@ -36,15 +36,23 @@ export function toggleFavLocation(currAddress) {
       });
       localStorage.favArr = JSON.stringify(favArr);
      
-      //console.log("-- add --");
-      //console.log(favArr);
+      console.log("-- add --");
+      console.log(favArr);
     }
     
+    
+    //
     dispatch({ 
       type: TOGGLE_FAV_LOCATION, 
       currAddress: currAddress,
-      isFav: isFav,
       favArr: favArr 
+    });
+    
+    //
+    dispatch({ 
+      type: IS_FAV, 
+      currAddress: currAddress,
+      isFav: isFav
     });
     
   };
