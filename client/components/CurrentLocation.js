@@ -15,9 +15,11 @@ class CurrentLocation extends React.Component {
     e.preventDefault();
     
     let currAddress = this.props.currAddress;
+    let lat = this.props.propLat;
+    let lng = this.props.propLng;
     
-    //
-    this.props.toggleFavLocation(currAddress);
+    // add or remove address
+    this.props.toggleFavLocation(currAddress, lat, lng);
   }
   
   
@@ -47,14 +49,11 @@ class CurrentLocation extends React.Component {
 
 function mapStateToProps(state) {
 
-  //console.log("--- in mapStateToProps --");
-  //console.log(state.isFav.isFav);
-
   return {
     currAddress: state.search.currAddress,
-    // Ok, this collide the name with state and method
-    //isFav: state.isFav.isFav
-    propIsFav: state.isFav.isFav
+    propIsFav: state.isFav.isFav,
+    propLat: state.search.lat,
+    propLng: state.search.lng
   };
 }
 

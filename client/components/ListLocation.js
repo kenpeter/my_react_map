@@ -7,10 +7,21 @@ class ListLocation extends React.Component {
   
   constructor(props) {
     super(props);
+    
+    console.log("construcotr....");
+  }
+  
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("---- shouldComponentUpdate ---");
+    console.log(nextProps);
+    console.log(nextState);
   }
   
   
   render() {
+    console.log("--- render ---");
+    console.log(this.props.propFavArr);
+  
     // yes index
     let locations = this.props.propFavArr.map((loc, index) => {
    
@@ -19,6 +30,8 @@ class ListLocation extends React.Component {
       return <SingleLocation
         key={index} 
         address={loc.address}
+        lat={loc.lat}
+        lng={loc.lng}
         timestamp={loc.timestamp}
       />
     });
@@ -37,6 +50,10 @@ class ListLocation extends React.Component {
 
 
 function mapStateToProps(state) {
+
+  //test
+  console.log("--- mapStateToProps ---");
+  console.log(state.toggleFavLocation.favArr);
 
   return {
     propFavArr: state.toggleFavLocation.favArr

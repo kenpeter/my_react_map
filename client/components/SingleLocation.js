@@ -1,12 +1,21 @@
 import React from 'react';
 import { connect } from "react-redux";
+import moment from 'moment';
+import clickSingleLocation from "../actions/clickSingleLocation";
 
 class SingleLocation extends React.Component {
   
   constructor(props) {
     super(props);
+    
+    this.onClick = this.onClick.bind(this);
   }
   
+  // don't call onClick()
+  onClick(e) {
+    e.preventDefault();
+    this.props.clickSingleLocation(this.props.address, this.props.lat, this.props.lng);
+  }
   
   render() {
     let cn = "list-group-item";
@@ -19,8 +28,11 @@ class SingleLocation extends React.Component {
     // render and return
     // render and return
     return(
-      <a className={cn}>
-        {this.props.address} - {this.props.timestamp}
+      <a className={cn} onClick={ this.onClick }>
+        {this.props.address}
+        &nbsp;----&nbsp;
+        <span className="createAt">{ moment(this.props.timestamp).fromNow() }</span>
+        <span className="glyphicon glyphicon-menu-right"></span>
       </a>
     )
   }
@@ -28,4 +40,4 @@ class SingleLocation extends React.Component {
 }
 
 
-export default SingleLocation;
+export default connect(null, { clickSingleLocation })(SingleLocation);

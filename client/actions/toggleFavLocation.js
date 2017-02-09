@@ -2,11 +2,12 @@ import { TOGGLE_FAV_LOCATION, IS_FAV } from "./types";
 import isAddressInFav from "../utils/isAddressInFav";
 
 
-export function toggleFavLocation(currAddress) {
+export function toggleFavLocation(currAddress, lat, lng) {
 
   // https://stackoverflow.com/questions/39257740/how-to-access-state-inside-redux-reducer
   return (dispatch, getState) => {
      
+    // get curr addr and addr arr
     const { toggleFavLocation } = getState();
     
     // add or remove from local storage
@@ -32,7 +33,9 @@ export function toggleFavLocation(currAddress) {
       
       favArr.push({
         address: currAddress,
-        timestamp: Date.now()
+        timestamp: Date.now(),
+        lat: lat,
+        lng: lng
       });
       localStorage.favArr = JSON.stringify(favArr);
      
@@ -48,12 +51,13 @@ export function toggleFavLocation(currAddress) {
       favArr: favArr 
     });
     
-    //
+    // the star
     dispatch({ 
       type: IS_FAV, 
       currAddress: currAddress,
       isFav: isFav
     });
+    
     
   };
 }
