@@ -34,6 +34,8 @@ class Search extends React.Component {
 
 
   render() {
+    //console.log("-- search input box render --");
+  
     // value, this.state.search
     return (
       <form id="geocoding_form" className="form-horizontal" onSubmit={this.onSubmit}>

@@ -11,7 +11,7 @@ const initState = {
 export default function search(state = initState, action = {}) {
   switch(action.type) {
     case SEARCH:
-      console.log("--- search, reducer ----");
+      //console.log("--- search, reducer ----");
     
       return {
         currAddress: action.currAddress,

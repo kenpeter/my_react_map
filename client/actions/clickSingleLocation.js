@@ -12,6 +12,15 @@ export default function clickSingleLocation(currAddress, lat, lng) {
     //console.log(lat);
     //console.log(lng);
     
+    // search, map, list location re-render
+    // single location gets re-render as well, because the parent ListLocation gets re-render.
+    dispatch({ 
+      type: SEARCH, 
+      currAddress: currAddress,
+      lat: lat,
+      lng: lng
+    });
+ 
     
   }
   
