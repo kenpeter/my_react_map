@@ -12,10 +12,8 @@ export default function toggleFavLocation(state = initState, action = {}) {
 
   switch(action.type) {
     case TOGGLE_FAV_LOCATION:
-    
-      console.log("--- toggleFavLocation ---");
-      console.log(action);
-    
+      console.log("--- toggleFavLocation.js, reducer ---");
+
       return {
         currAddress: action.currAddress,
         favArr: action.favArr

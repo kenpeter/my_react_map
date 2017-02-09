@@ -11,11 +11,8 @@ const initState = {
 export default function isFav(state = initState, action = {}) {
   switch(action.type) {
     case IS_FAV:
+      console.log("--- isFav, reducer ----");
     
-      //test
-      //console.log("---- in export default function isFav ----");
-      //console.log(action);
-      
       return {
         currAddress: action.currAddress,
         isFav: action.isFav

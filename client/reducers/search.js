@@ -11,12 +11,8 @@ const initState = {
 export default function search(state = initState, action = {}) {
   switch(action.type) {
     case SEARCH:
+      console.log("--- search, reducer ----");
     
-      //test
-      //console.log("---- in export default function search ----");
-      //console.log(action);
-    
-      // we define the acton interface like this.
       return {
         currAddress: action.currAddress,
         lat: action.lat,

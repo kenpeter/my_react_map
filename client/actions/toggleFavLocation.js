@@ -6,58 +6,70 @@ export function toggleFavLocation(currAddress, lat, lng) {
 
   // https://stackoverflow.com/questions/39257740/how-to-access-state-inside-redux-reducer
   return (dispatch, getState) => {
-     
-    // get curr addr and addr arr
+
+    // get currAddr and addrArr
     const { toggleFavLocation } = getState();
-    
-    // add or remove from local storage
+
+    // is fav
     let isFav;
+
+    // fav array
     let favArr = toggleFavLocation.favArr;
+    // is it in state.
     let index = isAddressInFav(favArr, currAddress);
-    
-    
+    let timenow = Date.now();
+    let newArr = [];
+
     if(index !== -1) {
       // found, remove
       isFav = false;
-      
-      // https://stackoverflow.com/questions/5767325/how-to-remove-a-particular-element-from-an-array-in-javascript
-      favArr.splice(index, 1); // found the index and remove that item
-      localStorage.favArr = JSON.stringify(favArr);
-      
-      //console.log("-- remove --");
-      //console.log(favArr);
+
+      // because any obj in javascript is ref
+      // if change ref obj, individual data within state cannot be touched.
+      // https://stackoverflow.com/questions/34582678/is-this-the-correct-way-to-delete-an-item-using-redux
+      newArr = [
+        ...favArr.slice(0, index),
+        ...favArr.slice(index + 1)
+      ];
+
+      dispatch({
+        type: TOGGLE_FAV_LOCATION,
+        currAddress: currAddress,
+        favArr: newArr
+      });
+
+      // store
+      localStorage.favArr = JSON.stringify(newArr);
     }
     else {
       // not there, add
       isFav = true;
-      
-      favArr.push({
+
+      // https://stackoverflow.com/questions/40911194/how-do-i-add-an-element-to-array-in-reducer-of-react-native-redux
+      // currAddr and addr array
+      newArr = [...favArr, {
         address: currAddress,
         timestamp: Date.now(),
         lat: lat,
         lng: lng
+      }];
+
+      dispatch({
+        type: TOGGLE_FAV_LOCATION,
+        currAddress: currAddress,
+        favArr: newArr
       });
-      localStorage.favArr = JSON.stringify(favArr);
-     
-      //console.log("-- add --");
-      //console.log(favArr);
+
+      // store
+      localStorage.favArr = JSON.stringify(newArr);
     }
-    
-    
-    //
-    dispatch({ 
-      type: TOGGLE_FAV_LOCATION, 
-      currAddress: currAddress,
-      favArr: favArr 
-    });
-    
+
     // the star
-    dispatch({ 
-      type: IS_FAV, 
+    dispatch({
+      type: IS_FAV,
       currAddress: currAddress,
       isFav: isFav
     });
-    
-    
+
   };
 }

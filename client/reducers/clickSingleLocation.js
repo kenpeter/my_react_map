@@ -8,7 +8,10 @@ const initState = {
 // able to fire
 export default function clickSingleLocation(state = initState, action = {}) {
   switch(action.type) {
+  
     case CLICK_SINGLE_LOCATION:
+      console.log("--- clickSingleLocation, reducer ----");
+    
       return {
         currAddress: action.currAddress,
       }

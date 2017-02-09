@@ -25,10 +25,7 @@ class CurrentLocation extends React.Component {
   
   render() {
     
-    let star;
-    
-    //console.log("--- in render ---");
-    //console.log(this.props.propIsFav);
+    let star
     
     if(this.props.propIsFav) {
       star = <i className="fa fa-star" aria-hidden="true"></i>;
