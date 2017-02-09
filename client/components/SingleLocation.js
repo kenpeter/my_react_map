@@ -21,7 +21,7 @@ class SingleLocation extends React.Component {
     let cn = "list-group-item";
 
     if (this.props.active) {
-      cn += "active-location";
+      cn += " active-location";
     }
   
   

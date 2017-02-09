@@ -18,6 +18,8 @@ class ListLocation extends React.Component {
     // yes index
     let locations = this.props.propFavArr.map((loc, index) => {
 
+      var active = this.props.propCurrAddress == loc.address;
+
       // need to return
       // have to return in array
       return <SingleLocation
@@ -25,6 +27,8 @@ class ListLocation extends React.Component {
         address={loc.address}
         lat={loc.lat}
         lng={loc.lng}
+        
+        active={active}
         timestamp={loc.timestamp}
       />
     });
@@ -44,10 +48,12 @@ class ListLocation extends React.Component {
 function mapStateToProps(state) {
 
   //test
-  console.log("--- ListLocation.js, mapStateToProps ---");
-  console.log(state.toggleFavLocation.favArr);
+  //console.log("--- ListLocation.js, mapStateToProps ---");
+  //console.log(state.toggleFavLocation.favArr);
 
   return {
+    // The way to think about is multiple components can share a single reducer
+    propCurrAddress: state.search.currAddress,
     propFavArr: state.toggleFavLocation.favArr
   };
 }

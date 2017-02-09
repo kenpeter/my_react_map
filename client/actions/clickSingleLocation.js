@@ -6,7 +6,11 @@ export default function clickSingleLocation(currAddress, lat, lng) {
   // https://www.youtube.com/watch?v=1QI-UE3-0PU
   return (dispatch, getState) => {
     
-    
+    //test
+    //console.log("---- clickSingleLocation ----");
+    //console.log(currAddress);
+    //console.log(lat);
+    //console.log(lng);
     
     
   }
