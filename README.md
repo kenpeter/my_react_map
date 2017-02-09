@@ -13,4 +13,4 @@
 yarn install
 
 ## Run
-yarn start
+yarn start, then visit localhost:8080
